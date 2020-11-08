@@ -2,6 +2,8 @@
 const input = document.querySelector("input[type='text']");
 const form = document.querySelector("form");
 
+let lastValue;
+
 /* Build out a function */
 const isValid = (e) => {
   e.preventDefault();
@@ -20,5 +22,16 @@ const isValid = (e) => {
   console.log(BigInt(valNumberTable.join('')) % 97n === 1n ? true : false);
 }
 
+const onlyAlphanumeric = (e) => {
+  const regex = new RegExp('^[a-zA-Z0-9]+$');
+  if (regex.test(e.target.value)) {
+    lastValue = e.target.value;
+  } else {
+    e.target.value.length > 1 ? e.target.value = lastValue : e.target.value = '';
+    return;
+  }
+}
+
 /* Hook up the event listeners */
+input.addEventListener('input', onlyAlphanumeric);
 form.addEventListener('submit', isValid);
