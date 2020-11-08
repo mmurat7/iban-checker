@@ -1,0 +1,6 @@
+input[type='text'] {
+  text-transform: uppercase;
+}
+::placeholder {
+  text-transform: none;
+}
