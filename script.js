@@ -32,6 +32,19 @@ const onlyAlphanumeric = (e) => {
   }
 }
 
+const pasteWithoutSpaces = (e) => {
+  e.preventDefault();
+  const start = e.target.selectionStart;
+  const end = e.target.selectionEnd;
+  const val = e.target.value;
+  const pasteData = e.clipboardData.getData('text').split(' ').join('');
+  input.value = val.slice(0, start) + pasteData + val.slice(end, val.length);
+  lastValue = input.value;
+  e.target.selectionStart = start + pasteData.length;
+  e.target.selectionEnd = start + pasteData.length;
+}
+
 /* Hook up the event listeners */
 input.addEventListener('input', onlyAlphanumeric);
+input.addEventListener('paste', pasteWithoutSpaces);
 form.addEventListener('submit', isValid);
