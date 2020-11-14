@@ -1,6 +1,7 @@
 /* Get elements */
 const input = document.querySelector("input[type='text']");
 const form = document.querySelector("form");
+const validationInfo = document.querySelector('.info');
 
 let lastValue;
 
@@ -19,7 +20,17 @@ const isValid = (e) => {
       valNumberTable.push(valNumber[i]);
     }
   }
-  console.log(BigInt(valNumberTable.join('')) % 97n === 1n ? true : false);
+
+  if (BigInt(valNumberTable.join('')) % 97n === 1n) {
+    validationInfo.textContent = 'Your IBAN is correct!';
+    validationInfo.classList.remove('wrong');
+    validationInfo.classList.add('correct');
+  } else {
+    validationInfo.textContent = 'Your IBAN is wrong!';
+    validationInfo.classList.remove('correct');
+    validationInfo.classList.add('wrong');
+  }
+  input.value = '';
 }
 
 const onlyAlphanumeric = (e) => {
@@ -36,7 +47,6 @@ const onlyAlphanumeric = (e) => {
     } else {
       e.target.value = ''
     }
-    return;
   }
 }
 

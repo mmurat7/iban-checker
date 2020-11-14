@@ -1,6 +1,117 @@
+:root {
+  --darkBlue: #2f4467;
+  --lightBlue: #0099ff;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h3 {
+  text-align: center;
+  color: var(--darkBlue);
+}
+
+#iban-checker {
+  width: 500px;
+  margin: 200px auto 0 auto;
+  box-shadow: 0 0 10px #bbb;
+  border-radius: 4px;
+}
+
+h3 {
+  margin: 0;
+  padding: 20px 0 20px 0;
+  font-size: 20px;
+}
+
+.instruction {
+  width: 90%;
+  margin: 20px auto 40px auto;
+  text-align: center;
+  color: var(--darkBlue);
+  font-size: 15px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+input {
+  flex-basis: 90%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+}
+
 input[type='text'] {
   text-transform: uppercase;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,0.3);
+  color: var(--darkBlue);
 }
+
+input[type='text']:hover {
+  border-color: rgba(0,0,0,0.6);
+}
+
+input[type='text']:focus {
+  border: 1px solid var(--lightBlue);
+}
+
+input[type='text']:focus::placeholder {
+  color: var(--lightBlue);
+}
+
+input[type='submit'] {
+  background-color: var(--lightBlue);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: var(--darkBlue);
+}
+
 ::placeholder {
   text-transform: none;
+}
+
+.info {
+  width: 500px;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.correct {
+  border: 1px solid rgba(0,200,0,0.2);
+  background-color: rgba(0,200,0,0.1);
+  color:rgb(0,200,0);
+}
+
+.wrong {
+  border: 1px solid rgba(255,0,0,0.2);
+  background-color: rgba(255,0,0,0.1);
+  color:rgb(255,0,0);
 }
