@@ -27,7 +27,15 @@ const onlyAlphanumeric = (e) => {
   if (regex.test(e.target.value)) {
     lastValue = e.target.value;
   } else {
-    e.target.value.length > 1 ? e.target.value = lastValue : e.target.value = '';
+    if (e.target.value.length > 1) {
+      const start = e.target.selectionStart;
+      const end = e.target.selectionEnd;
+      e.target.value = lastValue;
+      e.target.selectionStart = start - 1;
+      e.target.selectionEnd = end - 1;
+    } else {
+      e.target.value = ''
+    }
     return;
   }
 }
